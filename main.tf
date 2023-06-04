@@ -1,12 +1,6 @@
 variable "resource_group_name" {
   type = string
-  default = "coop-training"
-}
-
-variable "azurerm_subscription_id" {
-  type = string
-  default = "b837386d-5ba9-4ff9-b55e-7b483e17b8bd"
-  
+  default = "cn-training"
 }
 
 resource "random_string" "storage_account_name" {
