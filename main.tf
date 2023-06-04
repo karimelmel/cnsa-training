@@ -102,7 +102,7 @@ resource "azurerm_network_security_rule" "res-6" {
 }
 resource "azurerm_public_ip" "res-7" {
   allocation_method   = "Dynamic"
-  domain_name_label   = "cnsavm1-2uoxin6drvub2"
+  domain_name_label   = "cnsavm1-${random_string.storage_account_name.result}"
   location            = "westeurope"
   name                = "cnsapip"
   resource_group_name = var.resource_group_name
