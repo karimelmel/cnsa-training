@@ -1,12 +1,12 @@
 variable "resource_group_name" {
-  type = string
+  type    = string
   default = "cn-training"
 }
 
 resource "random_string" "storage_account_name" {
   length  = 7
   upper   = false
-  numeric  = false
+  numeric = false
   lower   = true
   special = false
 }
@@ -46,18 +46,7 @@ resource "azurerm_windows_virtual_machine" "res-1" {
   ]
 }
 
-resource "azurerm_virtual_machine_extension" "res-3" {
-  auto_upgrade_minor_version = true
-  name                       = "InvokeHardening"
-  publisher                  = "Microsoft.Compute"
-  settings                   = "{\"commandToExecute\":\"powershell.exe -ExecutionPolicy Bypass -File Invoke-Hardening.ps1\",\"fileUris\":[\"https://gist.githubusercontent.com/karimelmel/9897d373502ccaed22ac3722aa13b878/raw/a68bc0d8dbad022980857106d0df8eaf64e561e6/Invoke-Hardening.ps1\"],\"managedIdentity\":{}}"
-  type                       = "CustomScriptExtension"
-  type_handler_version       = "1.10"
-  virtual_machine_id         = azurerm_windows_virtual_machine.res-1.id
-  depends_on = [
-    azurerm_windows_virtual_machine.res-1,
-  ]
-}
+
 resource "azurerm_network_interface" "res-4" {
   location            = "westeurope"
   name                = "cnsaNIC"
@@ -101,6 +90,7 @@ resource "azurerm_public_ip" "res-7" {
   name                = "cnsapip"
   resource_group_name = var.resource_group_name
 }
+
 resource "azurerm_virtual_network" "res-8" {
   address_space       = ["10.0.0.0/16"]
   location            = "westeurope"
@@ -124,6 +114,35 @@ resource "azurerm_subnet_network_security_group_association" "res-10" {
     azurerm_subnet.res-9,
   ]
 }
+
+/*
+
+FJERNES I FØRSTE LAB 
+
+
+resource "azurerm_virtual_machine_extension" "res-3" {
+  auto_upgrade_minor_version = true
+  name                       = "InvokeHardening"
+  publisher                  = "Microsoft.Compute"
+  settings                   = "{\"commandToExecute\":\"powershell.exe -ExecutionPolicy Bypass -File Invoke-Hardening.ps1\",\"fileUris\":[\"https://gist.githubusercontent.com/karimelmel/9897d373502ccaed22ac3722aa13b878/raw/a68bc0d8dbad022980857106d0df8eaf64e561e6/Invoke-Hardening.ps1\"],\"managedIdentity\":{}}"
+  type                       = "CustomScriptExtension"
+  type_handler_version       = "1.10"
+  virtual_machine_id         = azurerm_windows_virtual_machine.res-1.id
+  depends_on = [
+    azurerm_windows_virtual_machine.res-1,
+  ]
+}
+
+
+*/
+
+
+
+
+
+/*
+
+FJERNES IKKE FØR SENERE LABBER
 
 resource "azurerm_storage_account" "res-13" {
   account_replication_type = "LRS"
@@ -155,3 +174,4 @@ resource "azurerm_role_assignment" "res-16" {
     azurerm_storage_account.res-13,
   ]
 }
+*/

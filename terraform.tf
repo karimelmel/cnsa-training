@@ -1,3 +1,4 @@
+# informasjon om provider Terraform skal hente og instlalere
 terraform {
   backend "local" {}
   required_providers {
