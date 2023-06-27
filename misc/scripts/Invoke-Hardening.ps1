@@ -31,7 +31,7 @@ function Invoke-Hardening {
     param (
         [Parameter(Mandatory = $false)]
         [string]
-        $FileFindingList = (Join-Path -Path $env:TEMP -ChildPath "SecurityBaseline\HardeningKitty-v.0.9.0\lists\finding_list_0x6d69636b_machine.csv"),
+        $FileFindingList = (Join-Path -Path $env:TEMP -ChildPath "SecurityBaseline\HardeningKitty-v.0.9.0\lists\finding_list_microsoft_windows_tls.csv"),
         [string]
         $HardeningKittyPath = ( Join-Path $env:TEMP -ChildPath "SecurityBaseline\HardeningKitty-v.0.9.0" ),
         [Parameter(Mandatory = $false)]
