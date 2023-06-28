@@ -1,8 +1,9 @@
 variable "resource_group_name" {
   type    = string
+  default = "INSERT-RG-NAME"
 }
 
-resource "random_string" "append_random_chars" {
+resource "random_string" "append_random_chars1" {
   length  = 7
   upper   = false
   numeric = false
@@ -10,13 +11,11 @@ resource "random_string" "append_random_chars" {
   special = false
 }
 
-
 variable "vm_password" {
   description = "Password for Virtual Machine"
   type        = string
   sensitive   = true
 }
-
 
 resource "azurerm_windows_virtual_machine" "res-1" {
   admin_password        = var.vm_password
@@ -81,7 +80,7 @@ resource "azurerm_network_security_rule" "res-6" {
 }
 resource "azurerm_public_ip" "res-7" {
   allocation_method   = "Dynamic"
-  domain_name_label   = "cnsavm1-${random_string.append_random_chars.result}"
+  domain_name_label   = "cnsavm1-${random_string.append_random_chars1.result}"
   location            = "westeurope"
   name                = "cnsapip"
   resource_group_name = var.resource_group_name
