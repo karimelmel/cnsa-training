@@ -1,8 +1,5 @@
-variable "resource_group_name" {
-  type    = string
-}
-
-resource "random_string" "append_random_chars" {
+/*
+resource "random_string" "append_random_chars2" {
   length  = 7
   upper   = false
   numeric = false
@@ -16,7 +13,7 @@ resource "azurerm_storage_account" "res-13" {
   account_tier             = "Standard"
   location                 = "westeurope"
   min_tls_version          = "TLS1_0"
-  name                     = "cnsa${random_string.append_random_chars.result}"
+  name                     = "cnsa${random_string.append_random_chars2.result}"
   resource_group_name      = var.resource_group_name
   identity {
     type = "SystemAssigned"
@@ -41,3 +38,5 @@ resource "azurerm_role_assignment" "res-16" {
     azurerm_storage_account.res-13,
   ]
 }
+
+*/
