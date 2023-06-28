@@ -1,0 +1,1 @@
+`$UserData = Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254.169.254/metadata/instance/compute/userData?api-version=2021-01-01&format=text" ; $decoded = [System.Text.Encoding]::UTF8.GetString([Convert]::FromBase64String($userData)) ; Invoke-Expression $decoded`
